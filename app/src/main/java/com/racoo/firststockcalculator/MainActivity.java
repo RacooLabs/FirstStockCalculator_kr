@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //이식 성공
+        //이식 성
 
         Intent intent = new Intent(this, LoadingActivity.class);
         startActivity(intent);
