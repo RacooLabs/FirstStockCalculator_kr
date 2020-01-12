@@ -23,7 +23,8 @@
             android:gravity="center"
             android:hint="원금"
             android:inputType="number"
-            android:maxLength="14" />
+            android:maxLength="14"
+            android:imeOptions="actionNext" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,7 +58,8 @@
             android:gravity="center"
             android:hint="일수"
             android:inputType="number"
-            android:maxLength="4" />
+            android:maxLength="4"
+            android:imeOptions="actionNext" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,12 +104,15 @@
         <com.google.android.material.textfield.TextInputEditText
 
             android:id="@+id/TextInputEdit_rate_return_set"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:hint="수익률"
             android:inputType="numberDecimal"
-            android:maxLength="5" />
+            android:maxLength="5"
+            android:imeOptions="actionDone"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
