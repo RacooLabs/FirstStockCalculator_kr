@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -34,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
     private RelativeLayout RelativeLayout_btn_refresh;
     private DecimalFormat decimalFormat = new DecimalFormat("###,###");
     private String result="";
-
-
 
     long principal=0;
     int numbersday=0;
@@ -69,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
 
 
         RelativeLayout_btn_refresh.setEnabled(false);
