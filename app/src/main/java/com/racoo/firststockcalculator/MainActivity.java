@@ -107,13 +107,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-
-
                 try{
 
-                    if(s != null && !TextUtils.isEmpty(s.toString())){
-                        principal = Long.parseLong(s.toString().replaceAll(",",""));
-                    } else {
+                    if(s != null && !TextUtils.isEmpty(s.toString()) && !s.toString().equals(result) ) {
+
+                        principal = Long.parseLong(s.toString().replaceAll(",", ""));
+                        result = decimalFormat.format(principal);//
+                        TextInputEdit_principal.setText(result);
+                        TextInputEdit_principal.setSelection(TextInputEdit_principal.length());
+
+                    } else if(TextUtils.isEmpty(s.toString())){
                         principal = 0;
                     }
 
@@ -124,18 +127,6 @@ public class MainActivity extends AppCompatActivity {
                     TextInputEdit_principal.setText("");
                 }
 
-
-
-
-
-
-                if(!TextUtils.isEmpty(s.toString()) && !s.toString().equals(result)){ //이게 빈공간이 아니거나, 전이랑 같지 않으면 갱신을 해줍니다.
-                    result = decimalFormat.format(parseDouble(s.toString().replaceAll(",","")));//이거 때문에 s자체를 바꿔버리네 씨발
-                    TextInputEdit_principal.setText(result);
-                    TextInputEdit_principal.setSelection(TextInputEdit_principal.length());
-                }
-
-                 // 원금계산을 위해 다시 콤마를 다 땜.
 
                 RelativeLayout_btn_refresh.setEnabled(false); // 그리고 버튼을 비활성화/활성화 시키기 위한.
                 TextView_result_money.setText("");
@@ -166,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     if(s != null && !TextUtils.isEmpty(s.toString())){
                         numbersday = Integer.parseInt(s.toString());
+                        TextInputEdit_number_days.setSelection(TextInputEdit_number_days.length());
                     } else {
                         numbersday = 0;
                     }
@@ -175,21 +167,15 @@ public class MainActivity extends AppCompatActivity {
                     TextInputEdit_number_days.setText("");
                 }
 
-                if(!TextUtils.isEmpty(s.toString())) { //이게 빈공간이 아니거나, 전이랑 같지 않으면 갱신을 해줍니다.
-                    TextInputEdit_number_days.setSelection(TextInputEdit_number_days.length());
-                }
 
 
                 RelativeLayout_btn_refresh.setEnabled(false);
                 TextView_result_money.setText("");
 
 
-
-
                 if (numbersday != 0 && validation()){
                     TextView_result_money.setText(decimalFormat.format(calculateStock())+" 원");
                 }
-
 
             }
 
@@ -209,12 +195,11 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
 
-
-
                 try{
 
                     if(s != null && !TextUtils.isEmpty(s.toString())){
                         rate = new BigDecimal(s.toString());
+                        TextInputEdit_rate_return.setSelection(TextInputEdit_rate_return.length());
                     } else {
                         rate = zero;
                     }
@@ -229,10 +214,6 @@ public class MainActivity extends AppCompatActivity {
                 RelativeLayout_btn_refresh.setEnabled(false);
                 TextView_result_money.setText("");
 
-
-                if(!TextUtils.isEmpty(s.toString())) { //이게 빈공간이 아니거나, 전이랑 같지 않으면 갱신을 해줍니다.
-                    TextInputEdit_rate_return.setSelection(TextInputEdit_rate_return.length());
-                }
 
                 if (!rate.equals(zero) && validation()){
 
@@ -249,7 +230,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
 
 
 
@@ -276,8 +256,6 @@ public class MainActivity extends AppCompatActivity {
             RelativeLayout_btn_refresh.setEnabled(true);
             RelativeLayout_btn_refresh.setClickable(true);
 
-            Log.d("::::",Boolean.toString(rate.compareTo(zero)>0));
-
             return true;
 
         } else {
@@ -292,13 +270,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public BigDecimal calculateStock() {
-
-//        bigDecimal0 = new BigDecimal(Integer.parseInt(principal));
-//        bigDecimal1 = new BigDecimal(Integer.parseInt(rate));
-//        bigDecimal2 = new BigDecimal(Integer.parseInt(numbersday));
-//        bigDecimal3 = new BigDecimal("100");
-//        bigDecimal4 = new BigDecimal("1");
-//        bigDecimal5 = new BigDecimal(Integer.parseInt(principal));
 
 
         bigDecimal0 = new BigDecimal(principal);
@@ -317,10 +288,3 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
-
-
-
-
-
-
-
