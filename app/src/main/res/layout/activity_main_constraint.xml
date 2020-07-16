@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <com.google.android.material.textfield.TextInputLayout
 
@@ -12,11 +12,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/TextView_bywon"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/TextView_bywon"
-        app:layout_constraintTop_toTopOf="@+id/TextView_bywon"
-        app:layout_constraintBottom_toBottomOf="@+id/TextView_bywon">
+        app:layout_constraintTop_toTopOf="@+id/TextView_bywon">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TextInputText_principal_set"
@@ -32,16 +32,16 @@
 
     <TextView
         android:id="@+id/TextView_bywon"
-        android:padding="12dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="48dp"
         android:layout_marginRight="48dp"
         android:layout_marginBottom="24dp"
-        android:autoSizeTextType="uniform"
         android:gravity="center_vertical|left"
+        android:padding="8dp"
         android:text="원 으로"
         android:textSize="24sp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/TextView_while"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toRightOf="@id/TextInputText_principal"
@@ -53,11 +53,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/TextView_while"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/TextView_while"
         app:layout_constraintTop_toTopOf="@+id/TextView_while"
-        app:layout_constraintBottom_toBottomOf="@+id/TextView_while"
         tools:layout_editor_absoluteY="213dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -81,11 +81,11 @@
         android:layout_marginBottom="24dp"
         android:layout_weight="1"
 
-        android:autoSizeTextType="uniform"
         android:gravity="center_vertical|left"
-        android:padding="12dp"
+        android:padding="8dp"
         android:text="일 동안"
         android:textSize="24sp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/TextView_percent"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toRightOf="@id/TextInputEdit_number_days"
@@ -97,11 +97,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginLeft="24dp"
-        android:autoSizeTextType="uniform"
         android:gravity="center"
+        android:padding="8dp"
         android:text="하루에"
-        android:padding="12dp"
         android:textSize="24sp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="@+id/TextView_percent"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -141,11 +141,11 @@
 
         android:layout_marginRight="24dp"
         android:layout_marginBottom="24dp"
-        android:autoSizeTextType="uniform"
         android:gravity="center"
+        android:padding="8dp"
         android:text="% 로"
-        android:padding="12dp"
         android:textSize="24sp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/TextView_result_money"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toRightOf="@id/TextInputEdit_rate_return"
@@ -157,13 +157,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="24dp"
-        android:autoSizeTextType="uniform"
         android:gravity="center"
+        android:padding="6dp"
         android:text="0"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:padding="12dp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/Textview_earntitle"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -175,15 +175,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
+        android:padding="8dp"
         android:text="을 법니다."
-        android:padding="12dp"
         android:textSize="24sp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/RelativeLayout_btn_refresh"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_result_money"
-        android:autoSizeTextType="uniform"/>
+        app:layout_constraintTop_toBottomOf="@+id/TextView_result_money" />
 
     <RelativeLayout
         android:id="@+id/RelativeLayout_btn_refresh"
@@ -208,22 +208,18 @@
 
     </RelativeLayout>
 
-    <com.google.android.gms.ads.AdView
+    <com.google.android.gms.ads.AdView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:ads="http://schemas.android.com/apk/res-auto"
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-7972968096388401/1372227589"
         ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintLeft_toLeftOf="parent"
-        ads:layout_constraintRight_toRightOf="parent"
-        >
-    </com.google.android.gms.ads.AdView>
-
+        ads:layout_constraintRight_toRightOf="parent"></com.google.android.gms.ads.AdView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
