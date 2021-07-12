@@ -1,34 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:id="@+id/mainLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffffff">
 
-    <com.google.android.material.textfield.TextInputLayout
 
-        android:id="@+id/TextInputText_principal"
+    <EditText
+
+        android:id="@+id/EditText_principal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="48dp"
+
+        android:layout_marginLeft="60dp"
+        android:paddingVertical="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/TextView_bywon"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/TextView_bywon"
-        app:layout_constraintTop_toTopOf="@+id/TextView_bywon">
+        app:layout_constraintTop_toTopOf="@+id/TextView_bywon"
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TextInputText_principal_set"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:hint="원금"
-            android:imeOptions="actionNext"
-            android:inputType="number"
-            android:maxLength="14" />
+        android:hint="원금"
+        android:gravity="center"
+        app:autoSizeTextType="uniform"
+        android:background="@drawable/edittext_rounded_corner_rectangle"
+        android:imeOptions="actionNext"
+        android:inputType="number"
+        android:maxLength="14"
 
-    </com.google.android.material.textfield.TextInputLayout>
+        />
 
     <TextView
         android:id="@+id/TextView_bywon"
@@ -36,41 +41,43 @@
         android:layout_height="0dp"
         android:layout_marginTop="48dp"
         android:layout_marginRight="48dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="4dp"
         android:gravity="center_vertical|left"
-        android:padding="8dp"
+        android:padding="24dp"
         android:text="원 으로"
         android:textSize="24sp"
         app:autoSizeTextType="uniform"
+        android:textColor="@color/mainTextColor"
         app:layout_constraintBottom_toTopOf="@+id/TextView_while"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toRightOf="@id/TextInputText_principal"
+        app:layout_constraintLeft_toRightOf="@id/EditText_principal"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TextInputEdit_number_days"
+
+    <EditText
+
+        android:id="@+id/EditText_number_days"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="48dp"
+
+        android:layout_marginLeft="60dp"
+        android:paddingVertical="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/TextView_while"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/TextView_while"
         app:layout_constraintTop_toTopOf="@+id/TextView_while"
-        tools:layout_editor_absoluteY="213dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TextInputEdit_number_days_set"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:hint="일수"
-            android:imeOptions="actionNext"
-            android:inputType="number"
-            android:maxLength="4" />
+        android:hint="일수"
+        android:gravity="center"
+        app:autoSizeTextType="uniform"
+        android:background="@drawable/edittext_rounded_corner_rectangle"
+        android:imeOptions="actionNext"
+        android:inputType="number"
+        android:maxLength="4"
 
-    </com.google.android.material.textfield.TextInputLayout>
+        />
 
 
     <TextView
@@ -78,60 +85,65 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginRight="48dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="4dp"
         android:layout_weight="1"
 
         android:gravity="center_vertical|left"
-        android:padding="8dp"
+        android:padding="24dp"
         android:text="일 동안"
         android:textSize="24sp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/TextView_percent"
+        android:textColor="@color/mainTextColor"
+        app:layout_constraintBottom_toTopOf="@+id/TextView_byonedays"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toRightOf="@id/TextInputEdit_number_days"
+        app:layout_constraintLeft_toRightOf="@id/EditText_number_days"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextView_bywon" />
+
 
     <TextView
         android:id="@+id/TextView_byonedays"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginLeft="24dp"
         android:gravity="center"
-        android:padding="8dp"
         android:text="하루에"
+        android:padding="26dp"
         android:textSize="24sp"
         app:autoSizeTextType="uniform"
+        android:layout_marginBottom="0dp"
+        android:textColor="@color/mainTextColor"
+        app:layout_constraintBottom_toTopOf="@+id/TextView_percent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextView_while"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <EditText
+
+        android:id="@+id/EditText_rate_return"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="60dp"
+        android:paddingVertical="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/TextView_percent"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/TextInputEdit_rate_return"
-        app:layout_constraintTop_toTopOf="@+id/TextView_percent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TextInputEdit_rate_return"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/TextView_percent"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toRightOf="@id/TextView_byonedays"
         app:layout_constraintRight_toLeftOf="@id/TextView_percent"
-        app:layout_constraintTop_toTopOf="@+id/TextView_percent">
+        app:layout_constraintTop_toTopOf="@+id/TextView_percent"
 
-        <com.google.android.material.textfield.TextInputEditText
+        android:hint="수익률"
+        android:gravity="center"
+        app:autoSizeTextType="uniform"
+        android:background="@drawable/edittext_rounded_corner_rectangle"
+        android:imeOptions="actionDone"
+        android:inputType="numberDecimal"
+        android:maxLength="5"
 
-            android:id="@+id/TextInputEdit_rate_return_set"
+        />
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:hint="수익률"
-            android:imeOptions="actionDone"
-            android:inputType="numberDecimal"
-            android:maxLength="5" />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
 
     <TextView
@@ -139,55 +151,43 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
 
-        android:layout_marginRight="24dp"
-        android:layout_marginBottom="24dp"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="% 로"
-        android:textSize="24sp"
+        android:layout_marginRight="48dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="center_vertical|left"
+        android:padding="24dp"
+        android:text="% 로\t\t\t\t\t"
+        android:textSize="20sp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/TextView_result_money"
+        android:textColor="@color/mainTextColor"
+        app:layout_constraintBottom_toTopOf="@id/TextView_result_money"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toRightOf="@id/TextInputEdit_rate_return"
+        app:layout_constraintLeft_toRightOf="@id/EditText_rate_return"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_while" />
+        app:layout_constraintTop_toBottomOf="@id/TextView_byonedays" />
 
     <TextView
         android:id="@+id/TextView_result_money"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="4dp"
         android:gravity="center"
-        android:padding="6dp"
+        android:padding="16dp"
         android:text="0"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/Textview_earntitle"
+        app:layout_constraintBottom_toTopOf="@+id/RelativeLayout_btn_refresh"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextView_percent" />
 
-    <TextView
-        android:id="@+id/Textview_earntitle"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="을 법니다."
-        android:textSize="24sp"
-        app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/RelativeLayout_btn_refresh"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_result_money" />
+
 
     <RelativeLayout
         android:id="@+id/RelativeLayout_btn_refresh"
-        android:layout_width="240dp"
+        android:layout_width="220dp"
         android:layout_height="100dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
@@ -195,7 +195,7 @@
         app:layout_constraintBottom_toTopOf="@id/adView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Textview_earntitle">
+        app:layout_constraintTop_toBottomOf="@+id/TextView_result_money">
 
 
         <ImageView

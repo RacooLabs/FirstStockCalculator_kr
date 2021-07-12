@@ -11,29 +11,28 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.material.textfield.TextInputEditText;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
-import static java.lang.Double.parseDouble;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextInputEditText TextInputEdit_principal, TextInputEdit_number_days,
-            TextInputEdit_rate_return;
+    private ConstraintLayout mainLayout;
+    private EditText EditText_principal, EditText_number_days, EditText_rate_return;
     private TextView TextView_result_money;
     private RelativeLayout RelativeLayout_btn_refresh;
     private DecimalFormat decimalFormat = new DecimalFormat("###,###");
@@ -52,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
     BigDecimal zero = new BigDecimal("0");
 
 
-
-
-
     private AdView mAdView;
 
 
@@ -64,10 +60,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         Intent intent = new Intent(this, LoadingActivity.class);
         startActivity(intent);
 
         setCom();
+
+        mainLayout.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                hideKeyboard();
+                return false;
+            }
+        });
 
 
         MobileAds.initialize(this,  "ca-app-pub-7972968096388401~4930885563");
@@ -93,9 +100,10 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main_constraint);
 
-        TextInputEdit_principal = findViewById(R.id.TextInputText_principal_set);
-        TextInputEdit_number_days = findViewById(R.id.TextInputEdit_number_days_set);
-        TextInputEdit_rate_return = findViewById(R.id.TextInputEdit_rate_return_set);
+        mainLayout = findViewById(R.id.mainLayout);
+        EditText_principal = findViewById(R.id.EditText_principal);
+        EditText_number_days = findViewById(R.id.EditText_number_days);
+        EditText_rate_return = findViewById(R.id.EditText_rate_return);
         TextView_result_money = findViewById(R.id.TextView_result_money);
         RelativeLayout_btn_refresh = findViewById(R.id.RelativeLayout_btn_refresh);
         mAdView = findViewById(R.id.adView);
@@ -105,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addTextChangedListenter(){
 
-        TextInputEdit_principal.addTextChangedListener(new TextWatcher() {
+        EditText_principal.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -119,9 +127,9 @@ public class MainActivity extends AppCompatActivity {
                     if(s != null && !TextUtils.isEmpty(s.toString()) && !s.toString().equals(result) ) {
 
                         principal = Long.parseLong(s.toString().replaceAll(",", ""));
-                        result = decimalFormat.format(principal);//
-                        TextInputEdit_principal.setText(result);
-                        TextInputEdit_principal.setSelection(TextInputEdit_principal.length());
+                        result = decimalFormat.format(principal);
+                        EditText_principal.setText(result);
+                        EditText_principal.setSelection(EditText_principal.length());
 
                     } else if(TextUtils.isEmpty(s.toString())){
                         principal = 0;
@@ -131,16 +139,15 @@ public class MainActivity extends AppCompatActivity {
                 } catch (NumberFormatException e){
                     Toast.makeText(getApplication(), "입력 값에 문제가 있습니다." ,Toast.LENGTH_LONG).show();
                     principal = 0;
-                    TextInputEdit_principal.setText("");
+                    EditText_principal.setText("");
                 }
-
 
                 RelativeLayout_btn_refresh.setEnabled(false); // 그리고 버튼을 비활성화/활성화 시키기 위한.
                 TextView_result_money.setText("");
 
                 if(principal != 0 && validation()) {
 
-                    TextView_result_money.setText(decimalFormat.format(calculateStock()) + " 원");
+                    TextView_result_money.setText(calculateStock());
 
                 }
 
@@ -152,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        TextInputEdit_number_days.addTextChangedListener(new TextWatcher() {
+        EditText_number_days.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -164,14 +171,14 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     if(s != null && !TextUtils.isEmpty(s.toString())){
                         numbersday = Integer.parseInt(s.toString());
-                        TextInputEdit_number_days.setSelection(TextInputEdit_number_days.length());
+                        EditText_number_days.setSelection(EditText_number_days.length());
                     } else {
                         numbersday = 0;
                     }
                 } catch (NumberFormatException e){
                     Toast.makeText(getApplication(), "입력 값에 문제가 있습니다." ,Toast.LENGTH_LONG).show();
                     numbersday = 0;
-                    TextInputEdit_number_days.setText("");
+                    EditText_number_days.setText("");
                 }
 
 
@@ -181,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if (numbersday != 0 && validation()){
-                    TextView_result_money.setText(decimalFormat.format(calculateStock())+" 원");
+                    TextView_result_money.setText(calculateStock());
                 }
 
             }
@@ -192,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        TextInputEdit_rate_return.addTextChangedListener(new TextWatcher() {
+        EditText_rate_return.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -206,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if(s != null && !TextUtils.isEmpty(s.toString())){
                         rate = new BigDecimal(s.toString());
-                        TextInputEdit_rate_return.setSelection(TextInputEdit_rate_return.length());
+                        EditText_rate_return.setSelection(EditText_rate_return.length());
                     } else {
                         rate = zero;
                     }
@@ -214,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (NumberFormatException e){
                     Toast.makeText(getApplication(), "입력 값에 문제가 있습니다." ,Toast.LENGTH_LONG).show();
                     rate = zero;
-                    TextInputEdit_rate_return.setText("");
+                    EditText_rate_return.setText("");
                 }
 
 
@@ -224,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (!rate.equals(zero) && validation()){
 
-                    TextView_result_money.setText(decimalFormat.format(calculateStock())+" 원");
+                    TextView_result_money.setText(calculateStock());
 
                 }
 
@@ -246,9 +253,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                TextInputEdit_principal.setText("");
-                TextInputEdit_rate_return.setText("");
-                TextInputEdit_number_days.setText("");
+                EditText_principal.setText("");
+                EditText_rate_return.setText("");
+                EditText_number_days.setText("");
             }
 
         });
@@ -258,7 +265,6 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean validation(){
 
-//        if (principal.length()>0 && rate.length()>0 && numbersday.length()>0) {
         if (principal>0 && rate.compareTo(zero)>0 && numbersday>0) {
             RelativeLayout_btn_refresh.setEnabled(true);
             RelativeLayout_btn_refresh.setClickable(true);
@@ -276,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public BigDecimal calculateStock() {
+    public String calculateStock() {
 
 
         bigDecimal0 = new BigDecimal(principal);
@@ -288,10 +294,19 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 0 ; i < numbersday ; i++){
 
             bigDecimal5 = bigDecimal4.add((rate.divide(bigDecimal3))).multiply(bigDecimal5);
+
         }
 
-        return bigDecimal5.subtract(bigDecimal0).setScale(0, RoundingMode.FLOOR);
+        return decimalFormat.format(bigDecimal5.subtract(bigDecimal0).setScale(0, RoundingMode.FLOOR))+" 원";
 
     }
 
+    public void hideKeyboard()
+    {
+        InputMethodManager inputManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(mainLayout.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+
 }
+
