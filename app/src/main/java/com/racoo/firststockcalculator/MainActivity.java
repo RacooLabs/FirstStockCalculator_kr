@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -22,6 +21,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -77,11 +78,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        MobileAds.initialize(this,  "ca-app-pub-7972968096388401~4930885563");
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
 
 
         RelativeLayout_btn_refresh.setEnabled(false);
@@ -297,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        return decimalFormat.format(bigDecimal5.subtract(bigDecimal0).setScale(0, RoundingMode.FLOOR))+" 원";
+        return decimalFormat.format(bigDecimal5.subtract(bigDecimal0).setScale(0, RoundingMode.FLOOR))+" 원을 법니다";
 
     }
 
