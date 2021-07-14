@@ -94,7 +94,7 @@
         android:textSize="24sp"
         app:autoSizeTextType="uniform"
         android:textColor="@color/mainTextColor"
-        app:layout_constraintBottom_toTopOf="@+id/TextView_byonedays"
+        app:layout_constraintBottom_toTopOf="@+id/TextView_percent"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toRightOf="@id/EditText_number_days"
         app:layout_constraintRight_toRightOf="parent"
@@ -106,18 +106,19 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="하루에"
-        android:padding="26dp"
+        android:text="하루\t\t"
+        android:padding="24dp"
         android:textSize="24sp"
         app:autoSizeTextType="uniform"
-        android:layout_marginBottom="0dp"
         android:textColor="@color/mainTextColor"
-        app:layout_constraintBottom_toTopOf="@+id/TextView_percent"
+
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextView_while"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/EditText_rate_return"
+        app:layout_constraintBottom_toTopOf="@+id/TextView_result_money"
+
+        />
 
 
     <EditText
@@ -125,12 +126,10 @@
         android:id="@+id/EditText_rate_return"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
-        android:layout_marginLeft="60dp"
         android:paddingVertical="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/TextView_percent"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/TextView_byonedays"
         app:layout_constraintRight_toLeftOf="@id/TextView_percent"
         app:layout_constraintTop_toTopOf="@+id/TextView_percent"
 
@@ -145,25 +144,22 @@
         />
 
 
-
     <TextView
         android:id="@+id/TextView_percent"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
-        android:layout_marginRight="48dp"
         android:layout_marginBottom="4dp"
         android:gravity="center_vertical|left"
+        android:text=" % 로"
         android:padding="24dp"
-        android:text="% 로\t\t\t\t\t"
+        android:textColor="@color/mainTextColor"
         android:textSize="20sp"
         app:autoSizeTextType="uniform"
-        android:textColor="@color/mainTextColor"
         app:layout_constraintBottom_toTopOf="@id/TextView_result_money"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toRightOf="@id/EditText_rate_return"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TextView_byonedays" />
+        app:layout_constraintTop_toBottomOf="@id/TextView_while" />
 
     <TextView
         android:id="@+id/TextView_result_money"
@@ -171,7 +167,8 @@
         android:layout_height="0dp"
         android:layout_marginBottom="4dp"
         android:gravity="center"
-        android:padding="16dp"
+        android:paddingVertical="30dp"
+        android:layout_marginHorizontal="12dp"
         android:text="0"
         android:textColor="#000000"
         android:textSize="30sp"
