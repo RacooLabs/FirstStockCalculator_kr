@@ -24,6 +24,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/TextView_bywon"
         app:layout_constraintTop_toTopOf="@+id/TextView_bywon"
+        android:textColor="@color/mainTextColor"
 
         android:hint="원금"
         android:gravity="center"
@@ -68,6 +69,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/TextView_while"
         app:layout_constraintTop_toTopOf="@+id/TextView_while"
+        android:textColor="@color/mainTextColor"
 
         android:hint="일수"
         android:gravity="center"
@@ -132,6 +134,7 @@
         app:layout_constraintLeft_toRightOf="@id/TextView_byonedays"
         app:layout_constraintRight_toLeftOf="@id/TextView_percent"
         app:layout_constraintTop_toTopOf="@+id/TextView_percent"
+        android:textColor="@color/mainTextColor"
 
         android:hint="수익률"
         android:gravity="center"
